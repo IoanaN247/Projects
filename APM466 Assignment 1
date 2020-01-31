@@ -1,1 +1,1063 @@
+## APM466 ##
+## Assignment 1 ##
+## Ioana Nedelcu ##
+
+library(dplyr)
+
+#Import data for chosen 10 bonds
+bonds <- read.csv("BondData2.csv") #bonds sorted in increasing maturity and include time to maturity from 02/2020 for ytm below
+attach(bonds)
+
+# Calculate yield to maturity for each bond in each day (10 yield vectors total)
+
+yields1 <- rep(0,10) # initialize yield vector for the 10 bonds
+# Can do fixed income annuity formula for ytm but need to take into account exact time to maturity from 02/2020
+  for (i in c(1:10)){
+    price <- bonds$X2020.01.02[i] # select specific day
+    coupon <- bonds$Coupon[i] # annual coupon payment
+    no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+}
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes") #ytm is the root for the above equation     
+  yields1[i] <- solution$root *100
+  }
+
+yields2 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.03[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields2[i] <- solution$root *100
+  }
+
+yields3 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.06[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields3[i] <- solution$root *100
+}
+
+yields4 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.07[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields4[i] <- solution$root *100
+}
+
+yields5 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.08[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields5[i] <- solution$root *100
+}
+
+yields6 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.09[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields6[i] <- solution$root *100
+}
+
+yields7 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.10[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields7[i] <- solution$root *100
+}
+
+yields8 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.13[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields8[i] <- solution$root *100
+}
+
+yields9 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.14[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields9[i] <- solution$root *100
+}
+
+yields10 <- rep(0,10) # initialize yield vector for the 10 bonds
+for (i in c(1:10)){
+  price <- bonds$X2020.01.15[i] #select specific day
+  coupon <- bonds$Coupon[i] # annual coupon payment
+  no = 2 * bonds$TimetoMaturity[i] # number of payment periods total
+  
+  yield <- function(ytm){ # value of bond using the fixed income annuity equation for cash flows
+    -1*price + ((100 + (coupon / ytm) * (((1 + ytm/2)^no) - 1)) * ((1 + ytm/2)^(-1*no)))
+  }
+  solution <- uniroot(yield, lower=-1, upper=1, extendInt = "yes")     
+  yields10[i] <- solution$root *100
+}
+
+#Make plot of the 10 daily yield vectors using spline interpolation
+
+maturity <- as.Date(bonds$Maturity, "%m/%d/%Y")
+
+png("YTM Curve.png", width = 1000, height = 600)
+plot(maturity,yields1,ylim = c(1.5, 2.1), ann=FALSE, type = 'o', col = 'white')
+lines(spline(maturity, yields1), col = 'red')
+lines(spline(maturity, yields2), col = 'blue')
+lines(spline(maturity, yields3), col = 'green')
+lines(spline(maturity, yields4), col = 'gold')
+lines(spline(maturity, yields5), col = 'navy')
+lines(spline(maturity, yields6), col = 'orange')
+lines(spline(maturity, yields7), col = 'yellow')
+lines(spline(maturity, yields8), col = 'purple')
+lines(spline(maturity, yields9), col = 'tan')
+lines(spline(maturity, yields10), col = 'pink')
+
+dates <- c("2020-01-02", "2020-01-03", "2020-01-06", "2020-01-07", "2020-01-08", "2020-01-09", "2020-01-10", 
+           "2020-01-13", "2020-01-14","2020-01-15")
+colors <- c("red", "blue", 'green', 'gold', 'navy', 'orange', 'yellow', 'purple', 'tan', 'pink')
+
+title(main="Yield to Maturity Curve for Two Weeks", xlab = "Maturity Date", ylab="Yield to Maturity (in %)")
+legend(x = "topright", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
+dev.off()
+
+## Spot Rate
+
+# Note: assume CAN 0.75 Sep 20 bond used matures in 6 months (1 month rate negligible)
+# We will have to do a "shifted" bootstrap using interpolated values for the rates of
+# CAN 2.75 Jun 22 and CAN 1.5 Jun 23 and interpolate again for the theoretical rates of Sep 22 and Sep 23
+
+# Bootstrap
+spot1 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.02 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot1[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot1[spot1!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot1[j])/2)^j)
+  }
+  spot1[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot1_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot1_shift[1] <- mean(c(spot1[1], spot1[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot1_shift[2] <- mean(c(spot1[2], spot1[3]))
+spot1_shift[3] <- mean(c(spot1[3], spot1[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+  for (j in c(1:3)){ #find discounted coupon cash flows
+    cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot1_shift[j])/2)^j)
+  }
+  spot1_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+  spot1[5] <- spot1_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+  n <- length(spot1[spot1!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot1[j])/2)^j)
+  }
+  spot1[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+  
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23 (again matures halfway through)
+  spot1[6] <- mean(c(spot1[4], spot1[7]))
+  
+# Use shifted boostrap again for Jun 23 rate  
+  spot1_shift[5] <- spot1[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+  for (j in c(1:5)){ #find discounted coupon cash flows
+    cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot1_shift[j])/2)^j)
+  }
+  spot1_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+  spot1[8] <- spot1_shift[6]
+ 
+  # Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+  spot1 <- spot1[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+  n <- length(spot1[spot1!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot1[j])/2)^j)
+  }
+  spot1[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+  
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+  spot1[8] <- mean(c(spot1[6], spot1[9]))
+  
+  spot1 <- spot1[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+  
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+    n <- length(spot1[spot1!=0])
+    for (j in c(1:n)){ #find discounted coupon cash flows
+      cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot1[j])/2)^j)
+    }
+    spot1[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+  }
+##
+  
+spot2 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.03 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+    
+  spot2[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot2[spot2!=0])
+    
+  for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot2[j])/2)^j)
+  }
+  spot2[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+  
+  # Shifted bootstrap for Jun/Dec bonds
+  spot2_shift <- rep(0, 6)
+  cashflows_shift <- rep(0,2)
+  spot2_shift[1] <- mean(c(spot2[1], spot2[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+  spot2_shift[2] <- mean(c(spot2[2], spot2[3]))
+  spot2_shift[3] <- mean(c(spot2[3], spot2[4]))
+  
+  # Now use shifted bootstrap rates to find Jun 22 spot
+  for (j in c(1:3)){ #find discounted coupon cash flows
+    cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot2_shift[j])/2)^j)
+  }
+  spot2_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+  
+  spot2[5] <- spot2_shift[4]
+  
+  # Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+  n <- length(spot2[spot2!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot2[j])/2)^j)
+  }
+  spot2[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+  
+  # Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+  spot2[6] <- mean(c(spot2[4], spot2[7]))
+  
+  # Use shifted boostrap again for Jun 23 rate  
+  spot2_shift[5] <- spot2[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+  for (j in c(1:5)){ #find discounted coupon cash flows
+    cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot2_shift[j])/2)^j)
+  }
+  spot2_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+  spot2[8] <- spot2_shift[6]
+  
+  # Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+  spot2 <- spot2[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+  n <- length(spot2[spot2!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot2[j])/2)^j)
+  }
+  spot2[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+  
+  # Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+  spot2[8] <- mean(c(spot2[6], spot2[9]))
+  
+  spot2 <- spot2[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+  
+  for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+    n <- length(spot2[spot2!=0])
+    for (j in c(1:n)){ #find discounted coupon cash flows
+      cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot2[j])/2)^j)
+    }
+    spot2[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+  }
+  
+  spot3 <- rep(0,12)
+  cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+  for (i in c(1:3)){ #first four bonds with regular bootstrap
+    price <- bonds$X2020.01.06 #select specific day
+    coupon <- bonds$Coupon / 2 # semi annual coupon payment
+    
+    spot3[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+    n <- length(spot3[spot3!=0])
+    
+    for (j in c(1:n)){ #find discounted coupon cash flows
+      cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot3[j])/2)^j)
+    }
+    spot3[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+  }
+  
+  # Shifted bootstrap for Jun/Dec bonds
+  spot3_shift <- rep(0, 6)
+  cashflows_shift <- rep(0,2)
+  spot3_shift[1] <- mean(c(spot3[1], spot3[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+  spot3_shift[2] <- mean(c(spot3[2], spot3[3]))
+  spot3_shift[3] <- mean(c(spot3[3], spot3[4]))
+  
+  # Now use shifted bootstrap rates to find Jun 22 spot
+  for (j in c(1:3)){ #find discounted coupon cash flows
+    cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot3_shift[j])/2)^j)
+  }
+  spot3_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+  
+  spot3[5] <- spot3_shift[4]
+  
+  # Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+  n <- length(spot3[spot3!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot3[j])/2)^j)
+  }
+  spot3[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+  
+  # Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+  spot3[6] <- mean(c(spot3[4], spot3[7]))
+  
+  # Use shifted boostrap again for Jun 23 rate  
+  spot3_shift[5] <- spot3[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+  for (j in c(1:5)){ #find discounted coupon cash flows
+    cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot3_shift[j])/2)^j)
+  }
+  spot3_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+  spot3[8] <- spot3_shift[6]
+  
+  # Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+  spot3 <- spot3[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+  n <- length(spot3[spot3!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot3[j])/2)^j)
+  }
+  spot3[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+  
+  # Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+  spot3[8] <- mean(c(spot3[6], spot3[9]))
+  
+  spot3 <- spot3[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+  
+  for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+    n <- length(spot3[spot3!=0])
+    for (j in c(1:n)){ #find discounted coupon cash flows
+      cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot3[j])/2)^j)
+    }
+    spot3[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+  }
+##
+  
+spot4 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.07 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot4[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot4[spot4!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot4[j])/2)^j)
+  }
+  spot4[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot4_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot4_shift[1] <- mean(c(spot4[1], spot4[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot4_shift[2] <- mean(c(spot4[2], spot4[3]))
+spot4_shift[3] <- mean(c(spot4[3], spot4[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot4_shift[j])/2)^j)
+}
+spot4_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot4[5] <- spot4_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot4[spot4!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot4[j])/2)^j)
+}
+spot4[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot4[6] <- mean(c(spot4[4], spot4[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot4_shift[5] <- spot4[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot4_shift[j])/2)^j)
+}
+spot4_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot4[8] <- spot4_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot4 <- spot4[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot4[spot4!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot4[j])/2)^j)
+}
+spot4[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot4[8] <- mean(c(spot4[6], spot4[9]))
+
+spot4 <- spot4[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot4[spot4!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot4[j])/2)^j)
+  }
+  spot4[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+}  
+
+spot5 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.08 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot5[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot5[spot5!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot5[j])/2)^j)
+  }
+  spot5[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot5_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot5_shift[1] <- mean(c(spot5[1], spot5[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot5_shift[2] <- mean(c(spot5[2], spot5[3]))
+spot5_shift[3] <- mean(c(spot5[3], spot5[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot5_shift[j])/2)^j)
+}
+spot5_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot5[5] <- spot5_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot5[spot5!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot5[j])/2)^j)
+}
+spot5[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot5[6] <- mean(c(spot5[4], spot5[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot5_shift[5] <- spot5[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot5_shift[j])/2)^j)
+}
+spot5_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot5[8] <- spot5_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot5 <- spot5[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot5[spot5!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot5[j])/2)^j)
+}
+spot5[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot5[8] <- mean(c(spot5[6], spot5[9]))
+
+spot5 <- spot5[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot5[spot5!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot5[j])/2)^j)
+  }
+  spot5[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+} 
+##
+
+spot6 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.09 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot6[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot6[spot6!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot6[j])/2)^j)
+  }
+  spot6[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot6_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot6_shift[1] <- mean(c(spot6[1], spot6[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot6_shift[2] <- mean(c(spot6[2], spot6[3]))
+spot6_shift[3] <- mean(c(spot6[3], spot6[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot6_shift[j])/2)^j)
+}
+spot6_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot6[5] <- spot6_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot6[spot6!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot6[j])/2)^j)
+}
+spot6[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot6[6] <- mean(c(spot6[4], spot6[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot6_shift[5] <- spot6[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot6_shift[j])/2)^j)
+}
+spot6_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot6[8] <- spot6_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot6 <- spot6[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot6[spot6!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot6[j])/2)^j)
+}
+spot6[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot6[8] <- mean(c(spot6[6], spot6[9]))
+
+spot6 <- spot6[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot6[spot6!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot6[j])/2)^j)
+  }
+  spot6[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+} 
+
+spot7 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.10 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot7[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot7[spot7!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot7[j])/2)^j)
+  }
+  spot7[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot7_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot7_shift[1] <- mean(c(spot7[1], spot7[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot7_shift[2] <- mean(c(spot7[2], spot7[3]))
+spot7_shift[3] <- mean(c(spot7[3], spot7[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot7_shift[j])/2)^j)
+}
+spot7_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot7[5] <- spot7_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot7[spot7!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot7[j])/2)^j)
+}
+spot7[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot7[6] <- mean(c(spot7[4], spot7[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot7_shift[5] <- spot7[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot7_shift[j])/2)^j)
+}
+spot7_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot7[8] <- spot7_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot7 <- spot7[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot7[spot7!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot7[j])/2)^j)
+}
+spot7[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot7[8] <- mean(c(spot7[6], spot7[9]))
+
+spot7 <- spot7[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot7[spot7!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot7[j])/2)^j)
+  }
+  spot7[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+}
+
+spot8 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.13 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot8[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot8[spot8!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot8[j])/2)^j)
+  }
+  spot8[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot8_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot8_shift[1] <- mean(c(spot8[1], spot8[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot8_shift[2] <- mean(c(spot8[2], spot8[3]))
+spot8_shift[3] <- mean(c(spot8[3], spot8[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot8_shift[j])/2)^j)
+}
+spot8_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot8[5] <- spot8_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot8[spot8!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot8[j])/2)^j)
+}
+spot8[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot8[6] <- mean(c(spot8[4], spot8[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot8_shift[5] <- spot8[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot8_shift[j])/2)^j)
+}
+spot8_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot8[8] <- spot8_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot8 <- spot8[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot8[spot8!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot8[j])/2)^j)
+}
+spot8[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot8[8] <- mean(c(spot8[6], spot8[9]))
+
+spot8 <- spot8[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot8[spot8!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot8[j])/2)^j)
+  }
+  spot8[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+}
+
+spot9 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.14 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot9[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot9[spot9!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot9[j])/2)^j)
+  }
+  spot9[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot9_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot9_shift[1] <- mean(c(spot9[1], spot9[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot9_shift[2] <- mean(c(spot9[2], spot9[3]))
+spot9_shift[3] <- mean(c(spot9[3], spot9[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot9_shift[j])/2)^j)
+}
+spot9_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot9[5] <- spot9_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot9[spot9!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot9[j])/2)^j)
+}
+spot9[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot9[6] <- mean(c(spot9[4], spot9[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot9_shift[5] <- spot9[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot9_shift[j])/2)^j)
+}
+spot9_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot9[8] <- spot9_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot9 <- spot9[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot9[spot9!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot9[j])/2)^j)
+}
+spot9[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot9[8] <- mean(c(spot9[6], spot9[9]))
+
+spot9 <- spot9[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot9[spot9!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot9[j])/2)^j)
+  }
+  spot9[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+}
+
+spot10 <- rep(0,12)
+cashflows <- rep(0, 12) # initialize yield vector for the 10 bonds
+for (i in c(1:3)){ #first four bonds with regular bootstrap
+  price <- bonds$X2020.01.15 #select specific day
+  coupon <- bonds$Coupon / 2 # semi annual coupon payment
+  
+  spot10[1] <- 2*(((100 + coupon[1]) / price[1]) - 1)
+  n <- length(spot10[spot10!=0])
+  
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[1+i] <- cashflows[1+i] + (coupon[1+i] / (1 + (spot10[j])/2)^j)
+  }
+  spot10[1+i] <- 2 *((((price[1+i] - cashflows[1+i])^(-1) * (100 + coupon[1+i])) ^ (1/(1+i))) - 1) #solve for missing spot rate
+}
+
+# Shifted bootstrap for Jun/Dec bonds
+spot10_shift <- rep(0, 6)
+cashflows_shift <- rep(0,2)
+spot10_shift[1] <- mean(c(spot10[1], spot10[2])) #interpolate in between Sep/Mar to get Dec/Jun rates (average since time is in middle)
+spot10_shift[2] <- mean(c(spot10[2], spot10[3]))
+spot10_shift[3] <- mean(c(spot10[3], spot10[4]))
+
+# Now use shifted bootstrap rates to find Jun 22 spot
+for (j in c(1:3)){ #find discounted coupon cash flows
+  cashflows_shift[1] <- cashflows_shift[1] + (coupon[5] / (1 + (spot10_shift[j])/2)^j)
+}
+spot10_shift[4] <- 2 *((((price[5] - cashflows_shift[1])^(-1) * (100 + coupon[5])) ^ (1/(4))) - 1) #solve for missing spot rate
+
+spot10[5] <- spot10_shift[4]
+
+# Use regular bootstrap for Mar 23 (assume Jun 22 rate is the 2nd-last coupon payment spot rate)
+n <- length(spot10[spot10!=0])
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[5] <- cashflows[5] + (coupon[6] / (1 + (spot10[j])/2)^j)
+}
+spot10[7] <- 2 *((((price[6] - cashflows[5])^(-1) * (100 + coupon[6])) ^ (1/(6))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 22 is average of Mar 22 and Mar 23
+spot10[6] <- mean(c(spot10[4], spot10[7]))
+
+# Use shifted boostrap again for Jun 23 rate  
+spot10_shift[5] <- spot10[7] # include Mar 23 spot as most recent shifted spot for Jun 23 (estimate)
+for (j in c(1:5)){ #find discounted coupon cash flows
+  cashflows_shift[2] <- cashflows_shift[2] + (coupon[7] / (1 + (spot10_shift[j])/2)^j)
+}
+spot10_shift[6] <- 2 *((((price[7] - cashflows_shift[2])^(-1) * (100 + coupon[7])) ^ (1/(6))) - 1) #solve for missing spot rate
+spot10[8] <- spot10_shift[6]
+
+# Use regular bootstrap for Mar 24 (assume Jun 23 rate is the 2nd-last coupon payment spot rate)
+spot10 <- spot10[c(-5)] # remove shifted rate as now will use the interpolated Sep 22 spot
+n <- length(spot10[spot10!=0])
+
+for (j in c(1:n)){ #find discounted coupon cash flows
+  cashflows[6] <- cashflows[6] + (coupon[8] / (1 + (spot10[j])/2)^j)
+}
+spot10[9] <- 2 *((((price[8] - cashflows[6])^(-1) * (100 + coupon[8])) ^ (1/(8))) - 1) #solve for missing spot rate
+
+# Spot for theoretical bond Sep 23 is average of Mar 23 and Mar 24
+spot10[8] <- mean(c(spot10[6], spot10[9]))
+
+spot10 <- spot10[c(-7)] # remove shifted rate as now will use the interpolated Sep 23 spot going forward
+
+for (i in c(1:2)){ #final 2 bonds with regular bootstrap
+  n <- length(spot10[spot10!=0])
+  for (j in c(1:n)){ #find discounted coupon cash flows
+    cashflows[6+i] <- cashflows[6+i] + (coupon[8+i] / (1 + (spot10[j])/2)^j)
+  }
+  spot10[8+i] <- 2 *((((price[8+i] - cashflows[6+i])^(-1) * (100 + coupon[8+i])) ^ (1/(8+i))) - 1) #solve for missing spot rate
+}
+
+#Make plot of the 10 daily spot vectors 
+
+maturity <- c(0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5)
+
+png("Spot Curve.png", width = 1000, height = 600)
+plot(maturity,spot1*100,ylim = c(1.5, 2.15), ann=FALSE, type = 'l', col = 'red')
+lines(maturity, spot2*100, col = 'blue')
+lines(maturity, spot3*100, col = 'green')
+lines(maturity, spot4*100, col = 'gold')
+lines(maturity, spot5*100, col = 'navy')
+lines(maturity, spot6*100, col = 'orange')
+lines(maturity, spot7*100, col = 'yellow')
+lines(maturity, spot8*100, col = 'purple')
+lines(maturity, spot9*100, col = 'tan')
+lines(maturity, spot10*100, col = 'pink')
+
+dates <- c("2020-01-02", "2020-01-03", "2020-01-06", "2020-01-07", "2020-01-08", "2020-01-09", "2020-01-10", 
+           "2020-01-13", "2020-01-14","2020-01-15")
+colors <- c("red", "blue", 'green', 'gold', 'navy', 'orange', 'yellow', 'purple', 'tan', 'pink')
+
+title(main="Spot Curve for Two Weeks", xlab = "Year (from 2020-03-01)", ylab="Spot Rate (in %)")
+legend(x = "topright", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
+dev.off()
+
+## Forward Rates
+
+# Calculate each forward rate for every day based on yearly spot rates
+fwd11 <- ((1 + spot1[4])^(2) / (1 + spot1[2])) - 1 
+fwd12 <- ((1 + spot1[6])^(3) / ((1 + spot1[4])^(2))) - 1
+fwd13 <- ((1 + spot1[8])^(4) / ((1 + spot1[6])^(3))) - 1
+fwd14 <- ((1 + spot1[10])^(5) / ((1 + spot1[8])^(4))) - 1
+fwdday1 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot2[4])^(2) / (1 + spot2[2])) - 1 
+fwd12 <- ((1 + spot2[6])^(3) / ((1 + spot2[4])^(2))) - 1
+fwd13 <- ((1 + spot2[8])^(4) / ((1 + spot2[6])^(3))) - 1
+fwd14 <- ((1 + spot2[10])^(5) / ((1 + spot2[8])^(4))) - 1
+fwdday2 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot3[4])^(2) / (1 + spot3[2])) - 1 
+fwd12 <- ((1 + spot3[6])^(3) / ((1 + spot3[4])^(2))) - 1
+fwd13 <- ((1 + spot3[8])^(4) / ((1 + spot3[6])^(3))) - 1
+fwd14 <- ((1 + spot3[10])^(5) / ((1 + spot3[8])^(4))) - 1
+fwdday3 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot4[4])^(2) / (1 + spot4[2])) - 1 
+fwd12 <- ((1 + spot4[6])^(3) / ((1 + spot4[4])^(2))) - 1
+fwd13 <- ((1 + spot4[8])^(4) / ((1 + spot4[6])^(3))) - 1
+fwd14 <- ((1 + spot4[10])^(5) / ((1 + spot4[8])^(4))) - 1
+fwdday4 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot5[4])^(2) / (1 + spot5[2])) - 1 
+fwd12 <- ((1 + spot5[6])^(3) / ((1 + spot5[4])^(2))) - 1
+fwd13 <- ((1 + spot5[8])^(4) / ((1 + spot5[6])^(3))) - 1
+fwd14 <- ((1 + spot5[10])^(5) / ((1 + spot5[8])^(4))) - 1
+fwdday5 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot6[4])^(2) / (1 + spot6[2])) - 1 
+fwd12 <- ((1 + spot6[6])^(3) / ((1 + spot6[4])^(2))) - 1
+fwd13 <- ((1 + spot6[8])^(4) / ((1 + spot6[6])^(3))) - 1
+fwd14 <- ((1 + spot6[10])^(5) / ((1 + spot6[8])^(4))) - 1
+fwdday6 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot7[4])^(2) / (1 + spot7[2])) - 1 
+fwd12 <- ((1 + spot7[6])^(3) / ((1 + spot7[4])^(2))) - 1
+fwd13 <- ((1 + spot7[8])^(4) / ((1 + spot7[6])^(3))) - 1
+fwd14 <- ((1 + spot7[10])^(5) / ((1 + spot7[8])^(4))) - 1
+fwdday7 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot8[4])^(2) / (1 + spot8[2])) - 1 
+fwd12 <- ((1 + spot8[6])^(3) / ((1 + spot8[4])^(2))) - 1
+fwd13 <- ((1 + spot8[8])^(4) / ((1 + spot8[6])^(3))) - 1
+fwd14 <- ((1 + spot8[10])^(5) / ((1 + spot8[8])^(4))) - 1
+fwdday8 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot9[4])^(2) / (1 + spot9[2])) - 1 
+fwd12 <- ((1 + spot9[6])^(3) / ((1 + spot9[4])^(2))) - 1
+fwd13 <- ((1 + spot9[8])^(4) / ((1 + spot9[6])^(3))) - 1
+fwd14 <- ((1 + spot9[10])^(5) / ((1 + spot9[8])^(4))) - 1
+fwdday9 <- c(fwd11, fwd12, fwd13, fwd14)
+
+fwd11 <- ((1 + spot10[4])^(2) / (1 + spot10[2])) - 1 
+fwd12 <- ((1 + spot10[6])^(3) / ((1 + spot10[4])^(2))) - 1
+fwd13 <- ((1 + spot10[8])^(4) / ((1 + spot10[6])^(3))) - 1
+fwd14 <- ((1 + spot10[10])^(5) / ((1 + spot10[8])^(4))) - 1
+fwdday10 <- c(fwd11, fwd12, fwd13, fwd14)
+
+#Plot
+
+png("Forward Curve.png", width = 1000, height = 600)
+year <- c(2,3,4,5)
+plot(year, 100*fwdday1, type = 'l', ann=FALSE, col = 'red', ylim = c(1.3, 1.8))
+lines(year, 100*fwdday2, col = 'blue')
+lines(year, 100*fwdday3, col = 'green')
+lines(year, 100*fwdday4, col = 'gold')
+lines(year, 100*fwdday5, col = 'navy')
+lines(year, 100*fwdday6, col = 'orange')
+lines(year, 100*fwdday7, col = 'yellow')
+lines(year, 100*fwdday8, col = 'purple')
+lines(year, 100*fwdday9, col = 'tan')
+lines(year, 100*fwdday10, col = 'pink')
+
+colors <- c("red", "blue", 'green', 'gold', 'navy', 'orange', 'yellow', 'purple', 'tan', 'pink')
+
+title(main="Forward Curve for Two Weeks", xlab = "Year (from 2020-03-01)", ylab="Forward Rate (in %)")
+legend(x = "topleft", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
+dev.off()
+
+## Covariance and Eigenvalues
+
+# Yearly YTM from calculated ytm's above
+series_dates <- data.frame(yields1, yields2, yields3, yields4, yields5, yields6, yields7, yields8, yields9, yields10)
+
+yield_return1 <- rep(0, 9)
+for (i in c(1:9)){
+yield_return1[i] <- log(series_dates[2,(i+1)] / series_dates[2,i])
+}
+
+yield_return2 <- rep(0, 9)
+for (i in c(1:9)){
+  yield_return2[i] <- log(series_dates[4,(i+1)] / series_dates[4,i])
+}
+
+yield_return3 <- rep(0, 9)
+for (i in c(1:9)){
+  yield_return3[i] <- log(series_dates[6,(i+1)] / series_dates[6,i])
+}
+
+yield_return4 <- rep(0, 9)
+for (i in c(1:9)){
+  yield_return4[i] <- log(series_dates[8,(i+1)] / series_dates[8,i])
+}
+
+yield_return5 <- rep(0, 9)
+for (i in c(1:9)){
+  yield_return5[i] <- log(series_dates[10,(i+1)] / series_dates[10,i])
+}
+
+yield_returns <- data.frame(yield_return1, yield_return2, yield_return3, yield_return4, yield_return5)
+covar <- cov(yield_returns, yield_returns)
+eigenvec <- eigen(covar, symmetric='T')$vectors
+eigenval <- eigen(covar, symmetric='T')$values
+
+# Yearly forward rates 
+series_dates2 <- data.frame(fwdday1, fwdday2, fwdday3, fwdday4, fwdday5, fwdday6, 
+                           fwdday7, fwdday8, fwdday9, fwdday10)
+
+fwd_return1 <- rep(0, 9)
+for (i in c(1:9)){
+  fwd_return1[i] <- log(series_dates2[1,(i+1)] / series_dates2[1,i])
+}
+
+fwd_return2 <- rep(0, 9)
+for (i in c(1:9)){
+  fwd_return2[i] <- log(series_dates2[2,(i+1)] / series_dates2[2,i])
+}
+
+fwd_return3 <- rep(0, 9)
+for (i in c(1:9)){
+  fwd_return3[i] <- log(series_dates2[3,(i+1)] / series_dates2[3,i])
+}
+
+fwd_return4 <- rep(0, 9)
+for (i in c(1:9)){
+  fwd_return4[i] <- log(series_dates2[4,(i+1)] / series_dates2[4,i])
+}
+
+fwd_returns <- data.frame(fwd_return1, fwd_return2, fwd_return3, fwd_return4)
+covar2 <- cov(fwd_returns, fwd_returns)
+eigenvec2 <- eigen(covar2, symmetric='T')$vectors
+eigenval2 <- eigen(covar2, symmetric='T')$values
+
+# View eigenvectors on chart to visualize movement (not mandatory)
+png("Largest Eigenvalues.png", width = 1000, height = 600)
+plot(c(1,2,3,4,5), eigenvec[,1], type = 'l', col = 'red', ylim = c(-1, 1), ann = FALSE)
+lines(c(1,2,3,4), eigenvec2[,1], type = 'l', col = 'blue')
+
+colors <- c("red", "blue", 'green', 'gold', 'navy', 'orange', 'yellow', 'purple', 'tan', 'pink')
+
+title(main="Largest Eigenvalues for Spot and Forward Rates", xlab = "Year (from 2020-03-01)", 
+      ylab="Eigenvector")
+legend(x = "topright", legend = c("Yield to Maturity", 'Forward Rates'), pch = 15,cex=1, bty = "n", col=c('red', 'blue'),xpd = TRUE)
+dev.off()
+
 

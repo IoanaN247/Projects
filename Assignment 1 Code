@@ -2,12 +2,15 @@
 ## Assignment 1 ##
 ## Ioana Nedelcu ##
 
+## Note: code is very long because the sections were repeated 10 times for each day (but the exact same logic applies)
+
 library(dplyr)
 
 #Import data for chosen 10 bonds
 bonds <- read.csv("BondData2.csv") #bonds sorted in increasing maturity and include time to maturity from 02/2020 for ytm below
 attach(bonds)
 
+################################ YTM ##########################################
 # Calculate yield to maturity for each bond in each day (10 yield vectors total)
 
 yields1 <- rep(0,10) # initialize yield vector for the 10 bonds
@@ -166,7 +169,7 @@ title(main="Yield to Maturity Curve for Two Weeks", xlab = "Maturity Date", ylab
 legend(x = "topright", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
 dev.off()
 
-## Spot Rate
+#################################### Spot Rate ########################################
 
 # Note: assume CAN 0.75 Sep 20 bond used matures in 6 months (1 month rate negligible)
 # We will have to do a "shifted" bootstrap using interpolated values for the rates of
@@ -900,7 +903,7 @@ title(main="Spot Curve for Two Weeks", xlab = "Year (from 2020-03-01)", ylab="Sp
 legend(x = "topright", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
 dev.off()
 
-## Forward Rates
+########################### Forward Rates #################################
 
 # Calculate each forward rate for every day based on yearly spot rates
 fwd11 <- ((1 + spot1[4])^(2) / (1 + spot1[2])) - 1 
@@ -984,7 +987,7 @@ title(main="Forward Curve for Two Weeks", xlab = "Year (from 2020-03-01)", ylab=
 legend(x = "topleft", legend = dates, pch = 15,cex=1, bty = "n", col=colors,xpd = TRUE)
 dev.off()
 
-## Covariance and Eigenvalues
+################################## Covariance and Eigenvalues ################################################
 
 # Yearly YTM from calculated ytm's above
 series_dates <- data.frame(yields1, yields2, yields3, yields4, yields5, yields6, yields7, yields8, yields9, yields10)

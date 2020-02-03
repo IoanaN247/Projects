@@ -905,7 +905,7 @@ dev.off()
 
 ########################### Forward Rates #################################
 
-# Calculate each forward rate for every day based on yearly spot rates
+# Calculate each forward rate for every day based on yearly spot rates (see formula in report)
 fwd11 <- ((1 + spot1[4])^(2) / (1 + spot1[2])) - 1 
 fwd12 <- ((1 + spot1[6])^(3) / ((1 + spot1[4])^(2))) - 1
 fwd13 <- ((1 + spot1[8])^(4) / ((1 + spot1[6])^(3))) - 1
@@ -990,9 +990,10 @@ dev.off()
 ################################## Covariance and Eigenvalues ################################################
 
 # Yearly YTM from calculated ytm's above
+# Create time series data frame
 series_dates <- data.frame(yields1, yields2, yields3, yields4, yields5, yields6, yields7, yields8, yields9, yields10)
 
-yield_return1 <- rep(0, 9)
+yield_return1 <- rep(0, 9) #formula for log returns for each year (vector with each day's rate)
 for (i in c(1:9)){
 yield_return1[i] <- log(series_dates[2,(i+1)] / series_dates[2,i])
 }
@@ -1018,15 +1019,16 @@ for (i in c(1:9)){
 }
 
 yield_returns <- data.frame(yield_return1, yield_return2, yield_return3, yield_return4, yield_return5)
-covar <- cov(yield_returns, yield_returns)
-eigenvec <- eigen(covar, symmetric='T')$vectors
-eigenval <- eigen(covar, symmetric='T')$values
+covar <- cov(yield_returns, yield_returns) # Covariance matrix 
+eigenvec <- eigen(covar, symmetric='T')$vectors # eigenvectors
+eigenval <- eigen(covar, symmetric='T')$values # eigenvalues
 
 # Yearly forward rates 
+# Creat time series data frame 
 series_dates2 <- data.frame(fwdday1, fwdday2, fwdday3, fwdday4, fwdday5, fwdday6, 
                            fwdday7, fwdday8, fwdday9, fwdday10)
 
-fwd_return1 <- rep(0, 9)
+fwd_return1 <- rep(0, 9) #formula for log returns for each year (vector with each day's rate)
 for (i in c(1:9)){
   fwd_return1[i] <- log(series_dates2[1,(i+1)] / series_dates2[1,i])
 }
@@ -1047,9 +1049,9 @@ for (i in c(1:9)){
 }
 
 fwd_returns <- data.frame(fwd_return1, fwd_return2, fwd_return3, fwd_return4)
-covar2 <- cov(fwd_returns, fwd_returns)
-eigenvec2 <- eigen(covar2, symmetric='T')$vectors
-eigenval2 <- eigen(covar2, symmetric='T')$values
+covar2 <- cov(fwd_returns, fwd_returns) # Covariance matrix 
+eigenvec2 <- eigen(covar2, symmetric='T')$vectors # eigenvectors
+eigenval2 <- eigen(covar2, symmetric='T')$values # eigenvalues
 
 # View eigenvectors on chart to visualize movement (not mandatory)
 png("Largest Eigenvalues.png", width = 1000, height = 600)
